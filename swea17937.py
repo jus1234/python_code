@@ -38,16 +38,20 @@ print(f)                                문자열 1개 출력하는 예제
 #import sys
 #sys.stdin = open("input.txt", "r")
 
+def gcd(m, n):
+    if n > m:
+        n, m = m, n
+    if n == 0:
+        return m
+    if m & n == 0:
+        return n
+    else:
+        return gcd(n, m % n)
+
 T = int(input())
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
-    a, b, c = map(float, input().split())
-    left = b - a
-    right = c - b
-    if left == right:
-        print(f'#{test_case} {0.0}')
-    else:
-        print(f'#{test_case} {abs(right - left) / 2}')
-
+    N, M = map(int, input().split())
+    print(f'#{test_case} {gcd(N, M)}')
     # ///////////////////////////////////////////////////////////////////////////////////

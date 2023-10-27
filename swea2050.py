@@ -37,17 +37,22 @@ print(f)                                문자열 1개 출력하는 예제
 '''
 #import sys
 #sys.stdin = open("input.txt", "r")
+text = input()
+alphabetList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alphaDict = {}
+result = ""
 
-T = int(input())
-# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
-for test_case in range(1, T + 1):
-    # ///////////////////////////////////////////////////////////////////////////////////
-    a, b, c = map(float, input().split())
-    left = b - a
-    right = c - b
-    if left == right:
-        print(f'#{test_case} {0.0}')
-    else:
-        print(f'#{test_case} {abs(right - left) / 2}')
+num = 1
+for alphabet in alphabetList:
+    alphaDict[alphabet] = num
+    num += 1
 
-    # ///////////////////////////////////////////////////////////////////////////////////
+num = 1
+size = len(text)
+for alphabet in text:
+    if num == size : result += str(alphaDict[alphabet])
+    else : result += str(alphaDict[alphabet]) + ' '
+
+    num += 1
+
+print(result)

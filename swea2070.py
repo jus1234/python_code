@@ -42,12 +42,11 @@ T = int(input())
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
-    a, b, c = map(float, input().split())
-    left = b - a
-    right = c - b
-    if left == right:
-        print(f'#{test_case} {0.0}')
-    else:
-        print(f'#{test_case} {abs(right - left) / 2}')
-
+    N, M = map(float, input().split())
+    answer = "<"
+    if N == M :
+        answer = "="
+    elif N > M :
+        answer = ">"
+    print(f'#{test_case} {answer}')
     # ///////////////////////////////////////////////////////////////////////////////////
