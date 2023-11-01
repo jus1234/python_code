@@ -41,40 +41,14 @@ print(f)                                문자열 1개 출력하는 예제
 T = int(input())
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 
-def prime_list(n):
-    # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
-    sieve = [True] * n
-
-    m = int(n ** 0.5)
-    for i in range(2, m + 1):
-        if sieve[i] == True:           # i가 소수인 경우 
-            for j in range(i+i, n, i): # i이후 i의 배수들을 False 판정
-                sieve[j] = False
-
-    # 소수 목록 산출
-    return sieve
-
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
     A, B = map(int, input().split())
-    M = abs(B - A)
-    if M <= 1:
+
+    M = B - A
+
+    if M == 1 or M <= -1:
         print(f'#{test_case} -1')
-        continue
-    
-    if M == 2:
-        print(f'#{test_case} 1')
-        continue
-    
-    primeList = prime_list(M)
-
-    if primeList[M - 3]:
-        print(f'#{test_case} 2')
-        continue
-
-    if primeList[M - 1]:
-        print(f'#{test_case} 1')
-        continue
-
-    print(f'#{test_case} -1')
+    else:
+        print(f'#{test_case} {M // 2}')
     # ///////////////////////////////////////////////////////////////////////////////////
