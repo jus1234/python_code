@@ -8,7 +8,7 @@ def solution(rows, columns, queries):
     return answer
 
 def rotate(x1, y1, x2, y2, matrix):
-    first = matrix[x1][y1]
+    first = matrix[x1][y1]s
     min_value = first
 
     #왼쪽
