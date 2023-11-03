@@ -72,16 +72,14 @@ for test_case in range(1, 11):
             txt_row = arr[i][j]
             txt_col = arr[i][j]
             for k in range(1, length):
-                if i < 8 - length:
+                if i < 8 - length + 1:
                     txt_row += arr[i + k][j]
-                if j < 8 - length:
+                if j < 8 - length + 1:
                     txt_col += arr[i][j + k]
             
             if isPalindrome(txt_col) and len(txt_col) != 1:
-                print(f'{i}{j} {txt_col}')
                 cnt += 1
             if isPalindrome(txt_row) and len(txt_row) != 1:
-                print(f'{i}{j} {txt_row}')
                 cnt += 1
 
     print(f'#{test_case} {cnt}')
