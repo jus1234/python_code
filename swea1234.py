@@ -11,8 +11,6 @@ for test_case in range(1, 11):
             m = deq.pop()
             if n != m:
                 deq.append(m)
-                deq.append(n)
-        else:
             deq.append(n)
     res = ''
     length = len(deq)
