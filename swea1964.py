@@ -19,7 +19,6 @@ for test_case in range(1, T + 1):
         y += d[dn][1]
 
     print(f'#{test_case}')
-    res = ''
     for i in range(0, len(lst)):
         print(*lst[i])
 
