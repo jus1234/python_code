@@ -5,7 +5,6 @@ func combinationWithStack<T: Comparable>(_ array: [T], _ n: Int) -> [[T]] {
     var stack = array.enumerated().map { ([$0.element], $0.offset) }
     
     while stack.count > 0 {
-        // print(stack)
         let now = stack.removeLast()
         
         let elements = now.0
