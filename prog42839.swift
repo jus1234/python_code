@@ -1,4 +1,37 @@
-func permutationWithStack<T: Comparable>(_ array: [T], _ n: Int) -> [[T]] {
+import Foundation
+
+func solution(_ numbers:String) -> Int {
+    let arr: [String] = numbers.map { String($0) }
+    
+    var per: [[String]] = []
+    for i in 1...numbers.count {
+        per += permutation(arr, i)
+    }
+    
+    per = Array(Set(per))
+    
+    per = per.filter {
+        if $0.count > 1 && $0[0] == "0" {
+            return false
+        }
+        let n = Int($0.reduce("", +))!
+        var isPrime: Bool = true
+        if n <= 1 {
+            isPrime = false
+        }
+        if n > 2 {
+            for i in 2...n - 1 {
+                if n % i == 0 {
+                    isPrime = false
+                }
+            }
+        }
+        return isPrime
+    }
+    return per.count
+}
+
+func permutation<T: Comparable>(_ array: [T], _ n: Int) -> [[T]] {
     var result: [[T]] = [[T]]()
     if array.count < n { return result }
     
@@ -26,34 +59,6 @@ func permutationWithStack<T: Comparable>(_ array: [T], _ n: Int) -> [[T]] {
             visited[i] = false
         }
     }
-    
-    return result
-}
-
-func permutationWithRecursion<T: Comparable>(_ array: [T], _ n: Int) -> [[T]] {
-    var result = [[T]]()
-    if array.count < n { return result }
-
-    var visited = Array(repeating: false, count: array.count)
-    
-    func cycle(_ now: [T]) {
-        if now.count == n {
-            result.append(now)
-            return
-        }
-        
-        for i in 0..<array.count {
-            if visited[i] {
-                continue
-            } else {
-                visited[i] = true
-                cycle(now + [array[i]])
-                visited[i] = false
-            }
-        }
-    }
-    
-    cycle([])
     
     return result
 }
