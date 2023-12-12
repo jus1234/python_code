@@ -1,24 +1,26 @@
-def backTrack(n):
-    global res
-    if n == N:
-        res += 1
+import sys
+
+count = 0
+
+def check(x):
+    for i in range(x):
+        if visited[x] == visited[i] or abs(visited[x] - visited[i]) == x - i:
+            return False
+    return True
+
+
+def queen(x, n):
+    global count
+    if x == n:
+        count += 1
     else:
-        for i in range(N):
-            if row[i] == ld[n - i] == rd[n + i] == 0:
-                row[i] = ld[n - i] = rd[n + i] = 1
-                backTrack(n + 1)
-                row[i] = ld[n - i] = rd[n + i] = 0
+        for i in range(n):
+            visited[x] = i
+            if check(x):
+                queen(x + 1, n)
 
 
-
-
-N = int(input())
-res = 0
-
-row = [0] * N
-ld = [0] * (2 * N)
-rd = [0] * (2 * N)
-        
-backTrack(0)
-
-print(res)
+n = int(sys.stdin.readline())
+visited = [0] * n
+queen(0, n)
+print(count)
