@@ -11,13 +11,13 @@ func solution(_ msg:String) -> [Int] {
         var nowValue: Int = alphaDic[now]!
         var dicFlag: Bool = true
         while dicFlag {
-            if pointer + 1 >= len {
+            pointer += 1
+            if pointer >= len {
                 pointer += 1
                 result.append(nowValue)
                 break
             }
-            let next: String = msgArr[pointer + 1]
-            pointer += 1
+            let next: String = msgArr[pointer]
             if let value = alphaDic[now + next] {
                 nowValue = value
                 now = now + next
