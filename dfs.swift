@@ -13,7 +13,7 @@ func DFS(graph: [String: [String]], start: String) -> [String] {
     var needVisitStack: [String] = [start]
     
     while !needVisitStack.isEmpty {
-        let node: String = needVisitStack.removeLast()
+        let node: String = needVisitStack.popLast()!
         if visitedQueue.contains(node) { continue }
         
         visitedQueue.append(node)
